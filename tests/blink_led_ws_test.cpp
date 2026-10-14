@@ -1,5 +1,6 @@
-#include "BlinkLED_WS.hpp"
 #include <cassert>
+
+#include "BlinkLED_WS.hpp"
 
 int main() {
   // Distinct channels verify GRB order and MSB-first serialization.
@@ -14,9 +15,7 @@ int main() {
     }
   }
   const auto off = BlinkLED_WS::Encode(0, 0, 0);
-  for (size_t i = 240; i < 264; ++i)
-    assert(off[i] == 0xC0);
+  for (size_t i = 240; i < 264; ++i) assert(off[i] == 0xC0);
   const auto white = BlinkLED_WS::Encode(255, 255, 255);
-  for (size_t i = 240; i < 264; ++i)
-    assert(white[i] == 0xF0);
+  for (size_t i = 240; i < 264; ++i) assert(white[i] == 0xF0);
 }
