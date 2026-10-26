@@ -1,4 +1,6 @@
-# BlinkLED_WS
+# BlinkLED_WS2812
+
+模块类型与主头文件保持 `BlinkLED_WS` / `BlinkLED_WS.hpp`，由独立的 BlinkLED_WS2812 仓库维护。
 
 单颗 WS2812 状态灯，沿用 BlinkLED 的软件定时器与致命错误闪烁逻辑。
 每 `blink_cycle` 毫秒切换亮灭；非中断致命错误时采用 125/125/500/500 ms 节奏。
@@ -12,4 +14,4 @@ SPI 必须独占，源时钟为 24 MHz；模块设为 /4、模式 0、MSB first�
 避免定时器线程等待中断以及临时帧的异步生命周期问题。MC02 使用 UINT32_MAX。
 
 中断内致命错误只停止心跳，与 BlinkLED 一致。该模块同时只能创建一个实例。
-编码回归测试由工程 tools/communication_tests 中的 blink_led_ws_test 运行。
+编码回归测试：`bash tests/run_host_test.sh`。独立检出时设置 `LIBXR_ROOT` 为 LibXR 源码目录。
